@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>lishuang community</title>
+    <!-- Required meta tags-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/my-information.css">
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="container-fluid" >
+    <div class="login-container">
+        <div class="login-text" >
+            <h1>欢迎来到中文姓名保留格式加密系统</h1>
+        </div>
+        <div class="login-back">
+            <img src="img/405cbfe8e5b0e96.jpg" height="350" width="1000"/>
+            <div class="login-button" th:if="${session.user == null}">
+                <!--a class="login-kick" href="https://github.com/login/oauth/authorize?client_id=6b371de70cbe534a316a&redirect_uri=http://localhost:9092/callback&scope=user&state=1"-->
+                <a class="login-kick" href="/login">
+                    <button type="button" class="btn btn-default login-btn">
+                        登录
+                    </button>
+                </a>
+                <label class="login-hint">请使用email账号登录</label>
+            </div>
+
+            <div class="information-btn" th:if="${session.user != null}">
+                <a class="login-kick" href="/information">
+                    <button type="button" class="btn btn-default login-btn">
+                        加密用户信息
+                    </button>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>lishuang community</title>
+    <!-- Required meta tags-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/my-information.css">
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="container-fluid" >
+    <div class="login-container">
+        <div class="login-text" >
+            <h1>欢迎来到中文姓名保留格式加密系统</h1>
+        </div>
+        <div class="login-form">
+            <form class="form-signin" action="/sign_up" method="post">
+                <label for="inputName" class="sr-only">username</label>
+                <input type="text" id="inputName" class="form-control" name="username" placeholder="username" required autofocus>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                <button type="submit" class="btn btn-success" style="width: 70px">注册</button>
+                <button type="button" class="btn btn-default" style="width:80px;">
+                    <a href="/login" class="myBack" style="text-decoration:none; color: #4cae4c">返回登录</a>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

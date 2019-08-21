@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>lishuang community</title>
+    <!-- Required meta tags-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/information">加密用户信息<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/information-list">查看用户信息</a></li>
+                    <li><a href="/">返回主页</a></li>
+                </ul>
+        </div>
+        <div class="col-sm-9 col-md-10  main">
+            <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>添加人</th>
+                    <th>姓名</th>
+                    <th>密文姓名</th>
+                    <th>性别</th>
+                    <th>手机号</th>
+                    <th>邮箱</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each ="info:${pagination.informationList}">
+                    <td th:text = "${info.id}"></td>
+                    <td th:text="${info.user}"></td>
+                    <td th:text="${info.name}"></td>
+                    <td th:text="${info.newName}"></td>
+                    <td th:text="${info.sex}"></td>
+                    <td th:text="${info.phone}"></td>
+                    <td th:text="${info.email}"></td>
+                </tr>>
+                </tbody>
+            </table>
+        </div>
+            <nav aria-label="Page navigation" style="margin-left: 300px">
+                <ul class="pagination">
+                    <li th:if="${pagination.showFirstPage}">
+                        <a href="/information-list?page=1" aria-label="Previous">
+                            <span aria-hidden="true">&lt;</span>
+                        </a>
+                    </li>
+                    <li th:if="${pagination.showPrevious}">
+                        <a th:href="@{/information-list(page=${pagination.page - 1})}" aria-label="Previous">
+                            <span aria-hidden="true">&lt;&lt;</span>
+                        </a>
+                    </li>
+                    <li th:each ="page:${pagination.pages}" th:class="${pagination.page == page}?'active':''">
+                        <a th:href="@{/information-list(page=${page})}" th:text="${page}" ></a>
+                    </li>
+                    <li th:if="${pagination.showNext}">
+                        <a th:href="@{/information-list(page=${pagination.page + 1})}" aria-label="Next">
+                            <span aria-hidden="true">&gt;&gt;</span>
+                        </a>
+                    </li>
+                    <li th:if="${pagination.showLastPage}">
+                        <a th:href="@{/information-list(page=${pagination.totalPage})}" aria-label="Next">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
